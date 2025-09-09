@@ -1,0 +1,13 @@
+--1 Run First
+CREATE DATABASE TaskDb;
+--2 Run 2nd
+IF OBJECT_ID('Tasks', 'U') IS NULL
+BEGIN
+    CREATE TABLE Tasks (
+        Id INT IDENTITY(1,1) PRIMARY KEY,
+        Title NVARCHAR(255) NOT NULL,
+        Description NVARCHAR(MAX),
+        IsCompleted BIT NOT NULL DEFAULT 0,
+        CreatedAt DATETIME NOT NULL DEFAULT GETDATE()
+    );
+END
